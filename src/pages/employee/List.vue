@@ -16,8 +16,8 @@
             <el-table-column fixed="right" label="操作">
              <!-- slot用来获取当前行的数据 -->
             <template v-slot="slot">
-                <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
-                <a href="" @click.prevent="toUpdateHandler(slot.row)">修改</a>
+                <i class="el-icon-delete"  a href="" @click.prevent="toDeleteHandler(slot.row.id)"></i>
+                <i class="el-icon-edit" a href="" @click.prevent="toUpdateHandler(slot.row)"></i>
             </template>
             </el-table-column>
             </el-table>
@@ -145,10 +145,15 @@ methods:
       
     },
         toAddHandel(){
-        this.visible = true;
+        this.form={
+        type:"customer"
+      }
+      this.visible = true;
     },
     toUpdateHandler(row){
-        this.visible = true;
+         //在模态框中显示当前行信息
+      this.form=row;
+      this.visible = true;
 
     },
     closeModalHandler(){
