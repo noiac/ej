@@ -16,7 +16,7 @@ export function getInfo(token) {
   })
 }
 
-export function logout() {
+export function ut() {
   return request({
     url: '/user/logout',
     method: 'post'
