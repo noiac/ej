@@ -6,7 +6,7 @@
     <!-- /按钮 -->
     <!-- 表格 -->
     <el-table :data="customers">
-      <el-table-column prop="id" label="编号"></el-table-column>
+      <el-table-column type="selection" prop="id" label="编号"></el-table-column>
       <el-table-column prop="province" label="省份"></el-table-column>
       <el-table-column prop="city" label="城市"></el-table-column>
       <el-table-column prop="area" label="地区"></el-table-column>
