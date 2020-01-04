@@ -7,9 +7,9 @@
         <el-button size="small" type="danger">批量删除</el-button>
         <!-- 表格 -->
         <el-table :data="employees">
-            <el-table-column type="selection"   fixed="left" prop="id" label="编号"></el-table-column>
-            <el-table-column fixed="left"  prop="realname" label="用户名"></el-table-column>
-            <!-- <el-table-column prop="gander" label="性别"></el-table-column> -->
+            <el-table-column    fixed="left" prop="id" label="编号"></el-table-column>
+            <el-table-column fixed="left"  prop="username" label="用户名"></el-table-column>
+            <el-table-column prop="realname" label="姓名"></el-table-column>
             <el-table-column width="120" prop="telephone" label="手机号"></el-table-column>
             <el-table-column width="200" prop="idCard" label="身份证号"></el-table-column>
             <el-table-column width="200" prop="bankCard" label="银行卡号"></el-table-column>
