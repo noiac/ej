@@ -16,7 +16,7 @@
       <el-table-column label="操作">
         <template v-slot="slot">
           <i class="el-icon-delete" @click.prevent="toDeleteHandler(slot.row.id)"></i>
-          <i class="el-icon-edit-outline" @click.prevent="toUpdateHandler"></i>
+          <i class="el-icon-edit-outline" @click.prevent="toUpdateHandler(slot.row)"></i>
         </template>
       </el-table-column>
     </el-table>

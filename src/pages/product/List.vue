@@ -16,7 +16,7 @@
           <!-- <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
           <a href="" @click.prevent="toUpdateHandler(slot.row)">修改</a> -->
           <i class="el-icon-delete" @click.prevent="toDeleteHandler(slot.row.id)"></i>
-          <i class="el-icon-edit-outline" @click.prevent="toUpdateHandler"></i>
+          <i class="el-icon-edit-outline" @click.prevent="toUpdateHandler(slot.row)"></i>
           <a href="">详情</a> 
         </template>
       </el-table-column>
