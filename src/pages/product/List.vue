@@ -10,7 +10,8 @@
       <el-table-column prop="name" label="产品名称"></el-table-column>
       <el-table-column prop="price" label="单价"></el-table-column>
       <el-table-column prop="description" label="描述"></el-table-column>
-      <el-table-column prop="categoryId" label="所属栏目"></el-table-column>
+      <el-table-column prop="categoryId" label="所属分类"></el-table-column>
+      <el-table-column prop="photo" label="照片"></el-table-column>
       <el-table-column label="操作">
         <template v-slot="slot">
           <!-- <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
@@ -49,6 +50,17 @@
         <el-form-item label="描述">
           <el-input type="textarea" v-model="form.description"></el-input>
         </el-form-item>
+        <el-form-item label="产品主图">
+    <el-upload
+    class="upload-demo"
+    action="http://134.175.154.93:6677//file/upload"
+    :file-list="fileList"
+    :on-success="uploadSuccessHandler"
+    list-type="picture">
+    <el-button size="small" type="primary">点击上传</el-button>
+    <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+    </el-upload>
+</el-form-item>
       </el-form>
 
       <span slot="footer" class="dialog-footer">
@@ -67,10 +79,16 @@ import querystring from 'querystring'
 export default {
   // 用于存放网页中需要调用的方法
   methods:{
+    //上传成功事件处理结果
+    uploadSuccessHandler(response){
+      let photo = "http://134.175.154.93:8888/group1/"+response.data.id
+            //将图片地址设置到form中，便于一起提交给后台
+            this.form.photo = photo;
+    },
     pageChageHandler(page){
-        this.params.page=page-1;
-        this.loadData();
-      },
+      this.params.page=page-1;
+      this.loadData();
+    },
     loadCategory(){
       let url = "http://localhost:6677/category/findAll"
       request.get(url).then((response)=>{
@@ -143,6 +161,7 @@ export default {
       },
     toUpdateHandler(row){
       // 模态框表单中显示出当前行的信息
+      this.fileList=[];
       this.form = row;
       this.visible = true;
     },
@@ -151,7 +170,8 @@ export default {
     },
     toAddHandler(){
       // 将form变为初始值
-      this.form = {}
+      this.fileList=[];
+      this.form = {};
       this.visible = true;
     }
   },
@@ -165,7 +185,8 @@ export default {
       params:{
         page:0,
         pageSize:10,
-      }
+      },
+      fileList:[]
     }
   },
   created(){
